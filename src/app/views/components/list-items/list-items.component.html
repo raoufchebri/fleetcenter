@@ -1,0 +1,12 @@
+<div class="item">
+    <div class="ui icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search icon"></i>
+    </div>
+</div>
+
+<div *ngIf="cars$ | async as cars">
+    <div *ngFor="let car of cars">
+        <app-item (click)="selectItem(car)" [selected]="car.id === selectedCarId" [car]="car"></app-item>
+    </div>
+</div>

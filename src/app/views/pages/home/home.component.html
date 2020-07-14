@@ -1,0 +1,29 @@
+<button (click)="show()" class="ui circular icon float button">
+  <i class="plus icon"></i>
+</button>
+
+<app-create-car class="ui modal"></app-create-car>
+
+<div *ngIf="fleet.length == 0" class="ui icon message">
+  <div class="content">
+    <div class="header">
+      Your Fleet is empty
+    </div>
+    <button (click)="show()" class="ui positive icon button">
+      <i class="plus icon"></i>Add your first car!
+    </button>
+  </div>
+</div>
+
+<div class="ui container">
+  <app-list-items *ngIf="! (isSelected | async)"></app-list-items>
+  <div *ngIf="isSelected | async" class="ui two column grid">
+    <div class="column">
+      <app-list-items></app-list-items>
+    </div>
+    <div class="column">
+      <app-detail></app-detail>
+    </div>
+  </div>
+  <div *ngIf="isSelected | async" class="ui vertical divider"></div>
+</div>

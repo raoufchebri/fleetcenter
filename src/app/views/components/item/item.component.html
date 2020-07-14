@@ -1,0 +1,18 @@
+<div [ngClass]="{'ui raised link card': true, 'green': selected == true}">
+    <div class="image left">
+        <img src="../../../../assets/images/default_car.jpg">
+    </div>
+    <div class="content">
+        <div class="header">{{ car.name }}</div>
+        <div class="meta">{{ car.vin }}</div>
+        <div class="description">
+            {{ car.make}} {{ car.model }} {{ car.year }}
+        </div>
+    </div>
+    <div class="extra content">
+        <a>
+            <i class="tachometer alternate icon"></i>
+            {{ car.odometer }} KM
+        </a>
+    </div>
+</div>

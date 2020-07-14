@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    font-size: x-large;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.header .actions {
+    font-size: medium;
+    margin-left: auto;
+}
+
+.header .title {
+    font-weight: bold;
+}
+
+.header .meta {
+    margin-left: 10px;    
+    color: gray;
+}
+
+.ui.form {
+    margin-top: 20px;
+}
+
+.inline.fields {
+    font-size: large;
+}
+
+.inline.fields input {
+    width: 85%;
+}
+
+.inline.fields label {
+    width: 15%;
+}
+
+
+.actions .icon {
+    cursor: pointer;
+}

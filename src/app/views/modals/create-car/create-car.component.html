@@ -1,0 +1,57 @@
+<i class="close icon"></i>
+<div class="header">
+    Add new car
+</div>
+<div class="content">
+    <form class="ui form" [formGroup]="form">
+        <div class="two fields">
+            <div class="field">
+                <label>Name</label>
+                <input type="text" name="name" placeholder="Car Name" formControlName="name">
+            </div>
+            <div class="field">
+                <label>VIN</label>
+                <input type="text" name="vin" placeholder="Car VIN" formControlName="vin">
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label>Make</label>
+                <input type="text" name="make" placeholder="Car Make" formControlName="make">
+            </div>
+            <div class="field">
+                <label>Model</label>
+                <input type="text" name="model" placeholder="Car Model" formControlName="model">
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label>Year</label>
+                <input type="number" name="year" placeholder="Year" formControlName="year">
+            </div>
+            <div class="field">
+                <label>Type</label>
+                <input type="text" name="type" placeholder="Car Type" formControlName="type">
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label>Fuel Type</label>
+                <input type="text" name="fuelType" placeholder="Car Fuel Type" formControlName="fuelType">
+            </div>
+            <div class="field">
+                <label>Odometer</label>
+                <input type="number" name="odometer" placeholder="Car Odometer" formControlName="odometer">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="actions">
+    <div class="ui black deny button">
+        Cancel
+    </div>
+    <div (click)="submit()" class="ui positive right labeled icon button">
+        Submit
+        <i class="checkmark icon"></i>
+    </div>
+</div>

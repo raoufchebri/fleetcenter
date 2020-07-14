@@ -28,9 +28,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/semantic-ui-css/semantic.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/semantic-ui-css/semantic.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "fleetcenter"
+    }
+  },
+  "defaultProject": "fleetcenter",
+  "cli": {
+    "analytics": "6441cf81-a4f7-41c8-b8ad-d022e64ccd6a"
+  }
 }

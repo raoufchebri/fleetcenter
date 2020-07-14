@@ -1,0 +1,26 @@
+.float.button{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:10%;
+	right:10%;
+	background-color:purple;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.message {
+	text-align: center;
+	font-size: xxx-large;
+}
+
+.message .button {
+	background-color: purple;
+	font-size: x-large;
+}
+
+.ui.divider {
+	height: 40%;
+}

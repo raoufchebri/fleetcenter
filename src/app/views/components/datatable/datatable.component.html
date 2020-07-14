@@ -1,0 +1,26 @@
+<table *ngIf="cars$ | async as cars" class="ui celled table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>VIN</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let car of cars">
+            <td data-label="Name">{{ car.name }}</td>
+            <td data-label="VIN">{{ car.vin }}</td>
+            <td data-label="Make">{{ car.make }}</td>
+            <td data-label="Model">{{ car.model }}</td>
+            <td data-label="Year">{{ car.year }}</td>
+            <td data-label="Actions">
+                <i class="eye icon"></i>
+                <i class="pencil icon"></i>
+                <i class="delete icon"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>
