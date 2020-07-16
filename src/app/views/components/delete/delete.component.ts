@@ -25,6 +25,6 @@ export class DeleteComponent implements OnInit {
   }
 
   showModal(): void {
-    $('.mini.modal.' + this.car.id).modal('show');
+    $(`.mini.modal.${this.car.id}.${this.colored}`).modal('show');
   }
 }
