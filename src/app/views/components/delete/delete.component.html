@@ -1,0 +1,21 @@
+<a (click)="showModal()">
+    <i [ngClass]="{'trash icon': true, 'red':colored == true}"></i>
+</a>
+
+<div [class]="'ui mini modal '+car.id">
+    <div class="header">
+        Delete Car
+    </div>
+    <div class="content">
+        <p>Are you sure you want to delete {{ car?.name }}</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">
+            No
+        </div>
+        <div (click)="delete()" class="ui positive right labeled icon button">
+            Yes
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>

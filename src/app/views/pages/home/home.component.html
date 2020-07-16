@@ -4,7 +4,21 @@
 
 <app-create-car class="ui modal"></app-create-car>
 
-<div *ngIf="fleet.length == 0" class="ui icon message">
+<div class="ui container" id="example">
+  <app-list-items *ngIf="! (isItemSelected | async)" [items]="fleet$"></app-list-items>
+  
+  <div *ngIf="isItemSelected | async" class="ui grid">
+    <div class="eight wide column">
+      <app-list-items [items]="fleet$"></app-list-items>
+    </div>
+    <div class="eight wide column">
+      <app-detail></app-detail>
+    </div>
+  </div>
+  <div *ngIf="isItemSelected | async" class="ui vertical divider"></div>
+</div>
+
+<div *ngIf="(fleet$ | async)?.length == 0" class="ui icon message">
   <div class="content">
     <div class="header">
       Your Fleet is empty
@@ -13,17 +27,4 @@
       <i class="plus icon"></i>Add your first car!
     </button>
   </div>
-</div>
-
-<div class="ui container">
-  <app-list-items *ngIf="! (isSelected | async)"></app-list-items>
-  <div *ngIf="isSelected | async" class="ui two column grid">
-    <div class="column">
-      <app-list-items></app-list-items>
-    </div>
-    <div class="column">
-      <app-detail></app-detail>
-    </div>
-  </div>
-  <div *ngIf="isSelected | async" class="ui vertical divider"></div>
 </div>

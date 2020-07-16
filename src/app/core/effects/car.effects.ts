@@ -22,8 +22,19 @@ export class CarEffects {
     createCar$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(carActions.create),
-            mergeMap(({car}) =>
+            mergeMap(({ car }) =>
                 this.carService.create(car).pipe(
+                    map(() => carActions.load()),
+                    catchError(error => of(carActions.loadFailure({ error }))))
+            ),
+        );
+    });
+
+    removeCar$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(carActions.remove),
+            mergeMap(({ id }) =>
+                this.carService.delete(id).pipe(
                     map(() => carActions.load()),
                     catchError(error => of(carActions.loadFailure({ error }))))
             ),

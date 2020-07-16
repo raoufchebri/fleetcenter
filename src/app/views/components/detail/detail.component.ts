@@ -26,32 +26,39 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.car$ = this.store.select(selectCar);
+
+    // Add car position to map maker
     this.car$.pipe(tap(car => {
       if (car) {
         const { lat, lon: lng } = car.position;
         this.center = { lat, lng };
         this.position = [this.center];
-        this.addMarker(car.name);
+        this.addMarker(this.center, car.name);
       }
     })).subscribe();
 
+    // Get props to display
     this.keys$ = this.car$.pipe(map(car => {
-      const keys = Object.keys(car);
-      const validKeys = [];
-      for (const key of keys) {
+      const props = Object.keys(car);
+      const keys = [];
+      for (const key of props) {
         if (!this.invalidProps.has(key)) {
-          validKeys.push(key);
+          keys.push(key);
         }
       }
-      return validKeys;
+      return keys;
     }));
   }
 
-  addMarker(title): void {
+  /**
+   * 
+   * @description Adds position to map maker
+   */
+  addMarker(position: google.maps.LatLngLiteral, title: string): void {
     this.markers.push({
       position: {
-        lat: this.center.lat,
-        lng: this.center.lng,
+        lat: position.lat,
+        lng: position.lng,
       },
       label: {
         color: 'red',
@@ -61,9 +68,6 @@ export class DetailComponent implements OnInit {
     });
   }
 
-  isValidProp(prop: string): boolean {
-    return this.invalidProps.has(prop) ? false : true;
-  }
 
   readonlyToggle(): void {
     this.readonly = !this.readonly;
@@ -72,6 +76,10 @@ export class DetailComponent implements OnInit {
   camelCaseToSentence(text: string): string {
     const result = text.replace(/([A-Z])/g, ' $1');
     return result.charAt(0).toUpperCase() + result.slice(1);
+  }
+
+  update() {
+    
   }
 }
 

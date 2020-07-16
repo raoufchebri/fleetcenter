@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/core/models';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducers';
-import { selectCar } from 'src/app/core/selectors/car.selectors';
+import { selectCar, selectFleet } from 'src/app/core/selectors/car.selectors';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import * as carActions from '../../../core/actions/car.actions';
 
 @Component({
@@ -15,15 +15,14 @@ import * as carActions from '../../../core/actions/car.actions';
 })
 export class HomeComponent implements OnInit {
 
-  fleet: any[] = [{ name: 'some car' }];
-  isSelected: Observable<boolean>;
+  isItemSelected: Observable<boolean>;
+  fleet$: Observable<Car[]>;
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.store.dispatch(carActions.load());
-    this.isSelected = this.store.select(selectCar).pipe(map(car => {
-      return car != null;
-    }));
+    this.isItemSelected = this.store.select(selectCar).pipe(map(car => car != null));
+    this.fleet$ = this.store.select(selectFleet);
   }
   show(): void {
     $('.ui.modal').modal('show');

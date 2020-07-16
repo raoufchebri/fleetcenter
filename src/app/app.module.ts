@@ -18,6 +18,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { EffectsModule } from '@ngrx/effects';
 import { CarEffects } from './core/effects/car.effects';
+import { DeleteComponent } from './views/components/delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CarEffects } from './core/effects/car.effects';
     CreateCarComponent,
     ItemComponent,
     ListItemsComponent,
-    DatatableComponent
+    DatatableComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,

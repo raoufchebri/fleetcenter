@@ -11,3 +11,7 @@ export const selectFleet = createSelector(
     selectCarState,
     (state: fromCar.State) => state.fleet
 );
+export const selectQuery = createSelector(
+    selectCarState,
+    (state: fromCar.State) => state.query
+);

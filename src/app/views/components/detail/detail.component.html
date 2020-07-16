@@ -3,9 +3,7 @@
         <div class="title"> {{ car.name }} </div>
         <div class="meta"> {{ car.vin }} </div>
         <div class="actions">
-            <i (click)="readonlyToggle()" *ngIf="!readonly" class="save blue icon"></i>
-            <i (click)="readonlyToggle()" *ngIf="readonly" class="pencil blue icon"></i>
-            <i class="floated trash red icon"></i>
+            <app-delete [car]="car" [colored]="true"></app-delete>   
         </div>
     </div>
     
