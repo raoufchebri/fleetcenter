@@ -17,8 +17,8 @@
 
     <div *ngIf="keys$ | async as keys" class="ui form">
         <div *ngFor="let key of keys" class="inline fields">
-            <label *ngIf="isValidProp(key)" >{{ key }}</label>
-            <input *ngIf="isValidProp(key)" type="text" placeholder="Car Name" [value]="car[key]" [disabled]="readonly">
+            <label >{{ camelCaseToSentence(key) }}</label>
+            <input type="text" placeholder="Car Name" [value]="car[key]" [disabled]="readonly">
         </div>
     </div>
 </div>

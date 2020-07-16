@@ -29,12 +29,22 @@ export class DetailComponent implements OnInit {
     this.car$.pipe(tap(car => {
       if (car) {
         const { lat, lon: lng } = car.position;
-        this.center = {lat, lng };
+        this.center = { lat, lng };
         this.position = [this.center];
         this.addMarker(car.name);
       }
     })).subscribe();
-    this.keys$ = this.car$.pipe(map(car => Object.keys(car)));
+
+    this.keys$ = this.car$.pipe(map(car => {
+      const keys = Object.keys(car);
+      const validKeys = [];
+      for (const key of keys) {
+        if (!this.invalidProps.has(key)) {
+          validKeys.push(key);
+        }
+      }
+      return validKeys;
+    }));
   }
 
   addMarker(title): void {
@@ -56,7 +66,12 @@ export class DetailComponent implements OnInit {
   }
 
   readonlyToggle(): void {
-    this.readonly = ! this.readonly;
+    this.readonly = !this.readonly;
+  }
+
+  camelCaseToSentence(text: string): string {
+    const result = text.replace(/([A-Z])/g, ' $1');
+    return result.charAt(0).toUpperCase() + result.slice(1);
   }
 }
 

@@ -1,12 +1,14 @@
-<div class="item">
-    <div class="ui icon input">
-        <input type="text" placeholder="Search...">
-        <i class="search icon"></i>
-    </div>
-</div>
-
 <div *ngIf="cars$ | async as cars">
-    <div *ngFor="let car of cars">
-        <app-item (click)="selectItem(car)" [selected]="car.id === selectedCarId" [car]="car"></app-item>
+    <div class="item">
+        <div class="ui icon input">
+            <input #search (keyup)="onSearch(search.value)" type="text" placeholder="Search...">
+            <i class="search icon"></i>
+        </div>
+    </div>
+
+    <div *ngIf="ids$ | async as ids">
+        <div *ngFor="let car of cars">
+            <app-item *ngIf="ids.has(car.id)" (click)="selectItem(car)" [selected]="car.id === selectedCarId" [car]="car"></app-item>
+        </div>
     </div>
 </div>

@@ -16,6 +16,8 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './app.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { EffectsModule } from '@ngrx/effects';
+import { CarEffects } from './core/effects/car.effects';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
       maxAge: 25, // Retains last 25 states
       // logOnly: environment.production, // Restrict extension to log-only mode
     }),
+    EffectsModule.forRoot([
+      CarEffects
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]

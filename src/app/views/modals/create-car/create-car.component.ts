@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Car } from '../../../core/models';
 import { CarService } from '../../../core/services/car/car.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducers';
+import * as carActions from '../../../core/actions/car.actions';
 
 @Component({
   selector: 'app-create-car',
@@ -21,7 +24,7 @@ export class CreateCarComponent implements OnInit {
     type: new FormControl(),
     odometer: new FormControl()
   });
-  constructor(private carService: CarService) { }
+  constructor(private carService: CarService, private store: Store<AppState>) { }
 
   ngOnInit(): void {
   }
@@ -44,6 +47,6 @@ export class CreateCarComponent implements OnInit {
       battery: null
     };
 
-    this.carService.create(car).subscribe(data => console.log('Car successfully added'));
+    this.store.dispatch(carActions.create({car}));
   }
 }

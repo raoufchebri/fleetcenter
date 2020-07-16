@@ -3,16 +3,19 @@ import { Car } from '../models';
 import { createReducer, on, Action } from '@ngrx/store';
 
 export interface State {
-    car: Car;
+    selectedCar: Car;
+    fleet: Car[];
 }
 
 const initialState: State = {
-    car: undefined
+    selectedCar: undefined,
+    fleet: undefined
 };
 
 const carReducer = createReducer(
     initialState,
-    on(fromCar.select, (state, action) => ({ ...state, car:  action.car })),
+    on(fromCar.select, (state, action) => ({ ...state, selectedCar:  action.car })),
+    on(fromCar.loadSuccess, (state, action) => ({ ...state, fleet: action.fleet}))
 );
 
 export function reducer(state: State | undefined, action: Action): State {

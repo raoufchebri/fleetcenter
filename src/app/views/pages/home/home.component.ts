@@ -6,6 +6,7 @@ import { AppState } from 'src/app/app.reducers';
 import { selectCar } from 'src/app/core/selectors/car.selectors';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import * as carActions from '../../../core/actions/car.actions';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(carActions.load());
     this.isSelected = this.store.select(selectCar).pipe(map(car => {
       return car != null;
     }));
