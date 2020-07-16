@@ -20,11 +20,11 @@
 
 <div *ngIf="(fleet$ | async)?.length == 0" class="ui icon message">
   <div class="content">
-    <div class="header">
-      Your Fleet is empty
-    </div>
+    <h3>
+      Oops! It looks like your fleet is empty. Please click below to add your first car!
+    </h3>
     <button (click)="show()" class="ui positive icon button">
-      <i class="plus icon"></i>Add your first car!
+      <i class="plus icon"></i>Add Car!
     </button>
   </div>
 </div>
