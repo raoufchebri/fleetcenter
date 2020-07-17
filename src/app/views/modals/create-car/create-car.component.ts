@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Car } from '../../../core/models';
 import { CarService } from '../../../core/services/car/car.service';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -12,6 +12,8 @@ import * as carActions from '../../../core/actions/car.actions';
   styleUrls: ['./create-car.component.scss']
 })
 export class CreateCarComponent implements OnInit {
+
+  @ViewChild('fileInput') fileInput: ElementRef;
 
   // Form Controls
   form = new FormGroup({
@@ -48,5 +50,9 @@ export class CreateCarComponent implements OnInit {
     };
 
     this.store.dispatch(carActions.create({car}));
+    this.form.reset();
+    // const file = this.fileInput.nativeElement.files[0];
+    // console.log(file);
+
   }
 }

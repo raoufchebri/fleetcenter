@@ -1,5 +1,8 @@
 
+<!-- BEGIN :: Create Car Modal -->
 <app-create-car class="ui modal"></app-create-car>
+<!-- END :: Create Car Modal -->
+
 
 <div class="ui container">
   <app-list-items *ngIf="! (isItemSelected | async)" [items]="fleet$"></app-list-items>
@@ -17,6 +20,17 @@
   </div>
 </div>
 
-<button (click)="show()" class="ui circular icon float button">
+<div *ngIf="(fleet$ | async)?.length == 0" class="ui icon message">
+  <div class="content">
+    <h3>
+      Oops! It looks like your fleet is empty. Please click below to add your first car!
+    </h3>
+    <button (click)="showCreateModal()" class="ui positive icon button">
+      <i class="plus icon"></i>Add Car!
+    </button>
+  </div>
+</div>
+
+<button (click)="showCreateModal()" class="ui circular icon float button">
   <i class="plus icon"></i>
 </button>

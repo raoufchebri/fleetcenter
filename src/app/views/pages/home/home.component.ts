@@ -24,11 +24,7 @@ export class HomeComponent implements OnInit {
     this.isItemSelected = this.store.select(selectCar).pipe(map(car => car != null));
     this.fleet$ = this.store.select(selectFleet);
   }
-  show(): void {
+  showCreateModal(): void {
     $('app-create-car').modal('show');
-  }
-
-  toggle(): void {
-    $('.ui.sidebar').sidebar('toggle');
   }
 }

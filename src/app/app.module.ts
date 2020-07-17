@@ -11,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ItemComponent } from './views/components/item/item.component';
 import { ListItemsComponent } from './views/components/list-items/list-items.component';
-import { DatatableComponent } from './views/components/datatable/datatable.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './app.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -33,7 +32,6 @@ import { KnobModule } from '@xmlking/ngx-knob';
     CreateCarComponent,
     ItemComponent,
     ListItemsComponent,
-    DatatableComponent,
     DeleteComponent,
     MileageChartComponent,
     KnobComponent
@@ -46,10 +44,8 @@ import { KnobModule } from '@xmlking/ngx-knob';
     FormsModule,
     GoogleMapsModule,
     StoreModule.forRoot(reducers),
-    // Instrumentation must be imported after importing StoreModule (config is optional)
     StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      // logOnly: environment.production, // Restrict extension to log-only mode
+      maxAge: 25,
     }),
     EffectsModule.forRoot([
       CarEffects

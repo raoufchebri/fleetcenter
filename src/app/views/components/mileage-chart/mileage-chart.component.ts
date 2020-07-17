@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 // import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Label } from 'ng2-charts';
@@ -8,7 +8,8 @@ import { Label } from 'ng2-charts';
   templateUrl: './mileage-chart.component.html',
   styleUrls: ['./mileage-chart.component.scss']
 })
-export class MileageChartComponent implements OnInit {
+export class MileageChartComponent implements OnInit, OnChanges {
+  @Input() label: string;
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
@@ -28,13 +29,18 @@ export class MileageChartComponent implements OnInit {
   };
   public barChartLabels: Label[] = ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
   public barChartType: ChartType = 'bar';
-  public barChartLegend = false;
+  public barChartLegend = true;
 
   public barChartData: ChartDataSets[] = [
     { data: [1536, 2453, 1023, 950, 863, 1300], label: 'Fleet Average', backgroundColor: '#D5ECFB' },
-    { data: [564, 1460, 1523, 305, 1635, 687], label: 'Current' }
+    { data: [564, 1460, 1523, 305, 1635, 687], label: this.label }
   ];
   constructor() { }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.randomize();
+    console.log(this.label);
+
+  }
 
   ngOnInit(): void {
   }
@@ -46,4 +52,17 @@ export class MileageChartComponent implements OnInit {
   public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
   }
-} 
+
+  public randomize(): void {
+    // Only Change 3 values
+    const data = [
+      Math.round(Math.random() * 2500),
+      2000,
+      (Math.random() * 2500),
+      2300,
+      (Math.random() * 2500),
+      1700];
+    this.barChartData[1].data = data;
+  }
+}
+

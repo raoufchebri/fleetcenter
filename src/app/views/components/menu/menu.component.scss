@@ -9,6 +9,13 @@ img .logo {
   .row.username {
     text-align: center;
   }
+
+  .header {
+    margin-left: 10px;
+    font-size: x-large;
+    font-weight: lighter;
+    color: blue
+  }
   
   @media screen and (max-width: 700px) {
     #main-menu {
@@ -21,3 +28,4 @@ img .logo {
       display: none;
     }
   }
+  

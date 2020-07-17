@@ -2,26 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Car } from '../../models';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
-  BASE_URL = 'https://j8vz2goe68.execute-api.eu-west-3.amazonaws.com/dev/crud';
   constructor(private httpClient: HttpClient) { }
 
   create(car: Car): Observable<any> {
-    return this.httpClient.post<Car>(this.BASE_URL, car);
+    return this.httpClient.post<Car>(environment.apiUrl, car);
   }
   get(): Observable<Car[]> {
-    return this.httpClient.get<Car[]>(this.BASE_URL);
+    return this.httpClient.get<Car[]>(environment.apiUrl);
   }
 
   update(id: string, car: Car): Observable<any> {
-    return this.httpClient.put(`${this.BASE_URL}/${id}`, car);
+    return this.httpClient.put(`${environment.apiUrl}/${id}`, car);
   }
 
   delete(id: string): Observable<any> {
-    return this.httpClient.delete(`${this.BASE_URL}/${id}`);
+    return this.httpClient.delete(`${environment.apiUrl}/${id}`);
   }
 }

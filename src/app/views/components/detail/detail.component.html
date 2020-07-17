@@ -7,6 +7,7 @@
         </div>
     </div>
 
+
     <div class="ui grid three columns">
         <div class="four wide column">
             <app-knob [value]="car.fuel" [text]="'Fuel'"></app-knob>
@@ -22,8 +23,8 @@
             </google-map>
         </div>
     </div>
+    <app-mileage-chart [label]="car.name"></app-mileage-chart>
 
-    <app-mileage-chart></app-mileage-chart>
 
     <div *ngIf="keys$ | async as keys" class="ui form">
         <div *ngFor="let key of keys" class="inline fields">
