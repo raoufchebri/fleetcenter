@@ -19,6 +19,10 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { EffectsModule } from '@ngrx/effects';
 import { CarEffects } from './core/effects/car.effects';
 import { DeleteComponent } from './views/components/delete/delete.component';
+import { ChartsModule } from 'ng2-charts';
+import { MileageChartComponent } from './views/components/mileage-chart/mileage-chart.component';
+import { KnobComponent } from './views/components/knob/knob.component';
+import { KnobModule } from '@xmlking/ngx-knob';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,9 @@ import { DeleteComponent } from './views/components/delete/delete.component';
     ItemComponent,
     ListItemsComponent,
     DatatableComponent,
-    DeleteComponent
+    DeleteComponent,
+    MileageChartComponent,
+    KnobComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +54,8 @@ import { DeleteComponent } from './views/components/delete/delete.component';
     EffectsModule.forRoot([
       CarEffects
     ]),
+    ChartsModule,
+    KnobModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { selectCar } from '../../../core/selectors/car.selectors';
 import { tap, map } from 'rxjs/operators';
 import { google } from '@google/maps';
+declare var $: any;
 
 @Component({
   selector: 'app-detail',
@@ -20,7 +21,9 @@ export class DetailComponent implements OnInit {
   markers: any = [];
   readonly = true;
   keys$: Observable<string[]>;
-  invalidProps = new Set(['id', 'position']);
+  invalidProps = new Set(['id', 'position', 'fuel', 'battery', 'name', 'vin']);
+  value = 75;
+  color = '#D60077';
 
   constructor(private store: Store<AppState>) { }
 
@@ -39,19 +42,21 @@ export class DetailComponent implements OnInit {
 
     // Get props to display
     this.keys$ = this.car$.pipe(map(car => {
-      const props = Object.keys(car);
-      const keys = [];
-      for (const key of props) {
-        if (!this.invalidProps.has(key)) {
-          keys.push(key);
+      if (car) {
+        const props = Object.keys(car);
+        const keys = [];
+        for (const key of props) {
+          if (!this.invalidProps.has(key)) {
+            keys.push(key);
+          }
         }
+        return keys.sort();
       }
-      return keys;
     }));
   }
 
   /**
-   * 
+   *
    * @description Adds position to map maker
    */
   addMarker(position: google.maps.LatLngLiteral, title: string): void {
@@ -76,10 +81,6 @@ export class DetailComponent implements OnInit {
   camelCaseToSentence(text: string): string {
     const result = text.replace(/([A-Z])/g, ' $1');
     return result.charAt(0).toUpperCase() + result.slice(1);
-  }
-
-  update() {
-    
   }
 }
 

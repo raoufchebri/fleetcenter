@@ -1,0 +1,14 @@
+<div class="ui card">
+    <div class="content">
+      <div class="header">Mileage vs Fleet</div>
+      <div style="display: block; padding: 20px;">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"          
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
+    </div>
+  </div>

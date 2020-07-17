@@ -3,19 +3,31 @@
         <div class="title"> {{ car.name }} </div>
         <div class="meta"> {{ car.vin }} </div>
         <div class="actions">
-            <app-delete [car]="car" [colored]="true"></app-delete>   
+            <app-delete [car]="car" [colored]="true"></app-delete>
         </div>
     </div>
-    
-    <google-map [height]="300" [center]="center">
-        <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
-            [title]="marker.title" [options]="marker.options">
-        </map-marker>
-    </google-map>
+
+    <div class="ui grid three columns">
+        <div class="four wide column">
+            <app-knob [value]="car.fuel" [text]="'Fuel'"></app-knob>
+        </div>
+        <div class="four wide column">
+            <app-knob [value]="car.battery" [text]="'Battery'"></app-knob>
+        </div>
+        <div class="column">
+            <google-map [height]="100" [width]="300" [center]="center">
+                <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
+                    [title]="marker.title" [options]="marker.options">
+                </map-marker>
+            </google-map>
+        </div>
+    </div>
+
+    <app-mileage-chart></app-mileage-chart>
 
     <div *ngIf="keys$ | async as keys" class="ui form">
         <div *ngFor="let key of keys" class="inline fields">
-            <label >{{ camelCaseToSentence(key) }}</label>
+            <label>{{ camelCaseToSentence(key) }}</label>
             <input type="text" placeholder="Car Name" [value]="car[key]" [disabled]="readonly">
         </div>
     </div>

@@ -1,30 +1,22 @@
-<button (click)="show()" class="ui circular icon float button">
-  <i class="plus icon"></i>
-</button>
 
 <app-create-car class="ui modal"></app-create-car>
 
-<div class="ui container" id="example">
+<div class="ui container">
   <app-list-items *ngIf="! (isItemSelected | async)" [items]="fleet$"></app-list-items>
   
-  <div *ngIf="isItemSelected | async" class="ui grid">
-    <div class="eight wide column">
+  <div *ngIf="isItemSelected | async" class="ui grid three columns">
+    <div class="six wide column">
       <app-list-items [items]="fleet$"></app-list-items>
     </div>
-    <div class="eight wide column">
+    <div class="one wide column">
+      <div class="ui vertical divider"></div>
+    </div>
+    <div class="nine wide column">
       <app-detail></app-detail>
     </div>
   </div>
-  <div *ngIf="isItemSelected | async" class="ui vertical divider"></div>
 </div>
 
-<div *ngIf="(fleet$ | async)?.length == 0" class="ui icon message">
-  <div class="content">
-    <h3>
-      Oops! It looks like your fleet is empty. Please click below to add your first car!
-    </h3>
-    <button (click)="show()" class="ui positive icon button">
-      <i class="plus icon"></i>Add Car!
-    </button>
-  </div>
-</div>
+<button (click)="show()" class="ui circular icon float button">
+  <i class="plus icon"></i>
+</button>

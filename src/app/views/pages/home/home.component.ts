@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     this.fleet$ = this.store.select(selectFleet);
   }
   show(): void {
-    $('.ui.modal').modal('show');
+    $('app-create-car').modal('show');
   }
 
   toggle(): void {
