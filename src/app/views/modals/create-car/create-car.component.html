@@ -10,28 +10,28 @@
 
         </div> -->
         <div class="two fields">
-            <div class="field">
-                <label>Name</label>
+            <div [ngClass]="{'field': true, 'error': form.controls.name.errors  && form.controls.name.touched}">
+                <label>Name *</label>
                 <input type="text" name="name" placeholder="Car Name" formControlName="name">
             </div>
-            <div class="field">
-                <label>VIN</label>
+            <div [ngClass]="{'field': true, 'error': form.controls.vin.errors  && form.controls.vin.touched}">
+                <label>VIN *</label>
                 <input type="text" name="vin" placeholder="Car VIN" formControlName="vin">
             </div>
         </div>
         <div class="two fields">
-            <div class="field">
-                <label>Make</label>
+            <div [ngClass]="{'field': true, 'error': form.controls.make.errors  && form.controls.make.touched}">
+                <label>Make *</label>
                 <input type="text" name="make" placeholder="Car Make" formControlName="make">
             </div>
-            <div class="field">
-                <label>Model</label>
+            <div [ngClass]="{'field': true, 'error': form.controls.model.errors  && form.controls.model.touched}">
+                <label>Model *</label>
                 <input type="text" name="model" placeholder="Car Model" formControlName="model">
             </div>
         </div>
         <div class="two fields">
-            <div class="field">
-                <label>Year</label>
+            <div [ngClass]="{'field': true, 'error': form.controls.year.errors  && form.controls.year.touched}">
+                <label>Year *</label>
                 <input type="number" name="year" placeholder="Year" formControlName="year">
             </div>
             <div class="field">
@@ -40,8 +40,8 @@
             </div>
         </div>
         <div class="two fields">
-            <div class="field">
-                <label>Fuel Type</label>
+            <div [ngClass]="{'field': true, 'error': form.controls.fuelType.errors  && form.controls.fuelType.touched}">
+                <label>Fuel Type *</label>
                 <input type="text" name="fuelType" placeholder="Car Fuel Type" formControlName="fuelType">
             </div>
             <div class="field">
@@ -55,8 +55,8 @@
     <div class="ui black deny button">
         Cancel
     </div>
-    <div (click)="submit()" class="ui positive right labeled icon button">
+    <button (click)="submit()" class="ui positive right labeled icon button" [disabled]="form.invalid">
         Submit
         <i class="checkmark icon"></i>
-    </div>
+    </button>
 </div>
